@@ -1,0 +1,25 @@
+.MainContainer {
+  max-width: 1400px;
+  padding: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.header {
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+}
+.text {
+  margin-left: 5px;
+}
+.mainTitle {
+  margin-bottom: -12px !important;
+}
+.noConnection {
+  margin-top: 30px !important;
+  margin: auto;
+  max-width: 800px;
+}
+.internalCard {
+  padding: 20px;
+}
