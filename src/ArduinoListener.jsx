@@ -1,7 +1,12 @@
 import React, { Fragment } from "react";
+import { CssBaseline } from '@nextui-org/react';
 
 const ArduinoListener = () => {
-  return <Fragment>Hola</Fragment>;
+  return (
+    <Fragment>
+      <CssBaseline />
+    </Fragment>
+  );
 };
 
 export default ArduinoListener;
