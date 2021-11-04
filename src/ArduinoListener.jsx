@@ -1,11 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { CssBaseline } from "@nextui-org/react";
-
-import { Text } from "@nextui-org/react";
+import { CssBaseline, Text } from "@nextui-org/react";
 
 import arduinoIcon from "./images/arduinoIcon.png";
-
-import FirebaseService from "./services/FirebaseService";
 
 import ArduinoPage from "./components/ArduinoPage";
 import NoConnection from "./components/NoConnection";
@@ -18,8 +14,7 @@ const ArduinoListener = () => {
   useEffect(() => {
     setInterval(() => {
       setIsArduinoConnected(true);
-      FirebaseService.getConsoleMessages();
-    }, 5000);
+    }, 1000);
   }, []);
 
   return (

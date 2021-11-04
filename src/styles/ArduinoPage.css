@@ -1,3 +1,35 @@
 .ArduinoPage {
   padding: 20px;
 }
+.headerConsole {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.headerConsole span {
+  color: white;
+  font-weight: bolder;
+  display: flex;
+}
+.dot {
+  margin-left: -10px;
+}
+.consoleContainer {
+  margin: 10px 30px;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  padding: 10px 30px;
+  color: #d4d4d4;
+  min-width: 400px;
+  -webkit-box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.3);
+}
+.lineConsole {
+  margin: 0px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.lineConsole .number {
+  color: #858585;
+  margin-right: 15px;
+}
