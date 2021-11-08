@@ -5,17 +5,17 @@ import { HiStatusOnline } from "react-icons/hi";
 import { GoPrimitiveDot } from "react-icons/go";
 import { SiFirebase } from "react-icons/si";
 
-import { collection } from "firebase/firestore";
-import { useFirestore, useFirestoreCollectionData } from "reactfire";
+import { ref } from "firebase/database";
+import { useDatabase, useDatabaseListData } from "reactfire";
 
 import arduinoBoard from "../images/arduinoBoard.png";
 
 const BoardConsole = () => {
-  const firestore = useFirestore();
+  const database = useDatabase();
 
-  const messagesCollection = collection(firestore, "consoleMessages");
+  const actualesRef = ref(database, "consoleMessages");
   const { status: statusMessages, data: dataMessages } =
-    useFirestoreCollectionData(messagesCollection);
+    useDatabaseListData(actualesRef);
 
   return (
     <div style={{ marginTop: "20px" }}>
@@ -75,7 +75,7 @@ const BoardConsole = () => {
             </div>
             <div style={{ marginTop: "10px" }}>
               {dataMessages &&
-                dataMessages.map(({ message }, index) => (
+                dataMessages.map((message, index) => (
                   <p key={index} className="lineConsole">
                     <span className="number">{index + 1}</span>
                     {message}

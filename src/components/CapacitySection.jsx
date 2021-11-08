@@ -5,16 +5,30 @@ import { BsFillPeopleFill } from "react-icons/bs";
 import { BiExit } from "react-icons/bi";
 import { ImEnter } from "react-icons/im";
 
-import { collection } from "firebase/firestore";
-import { useFirestore, useFirestoreCollectionData } from "reactfire";
+import { ref } from "firebase/database";
+import { useDatabase, useDatabaseObjectData } from "reactfire";
 
 import CardInfo from "./CardInfo";
 
 const CapacitySection = () => {
-  const firestore = useFirestore();
+  const database = useDatabase();
+
+  const actualesRef = ref(database, "actuales");
+  const { status: actualesStatus, data: actualesData } =
+    useDatabaseObjectData(actualesRef);
+
+  const entradasRef = ref(database, "entradas");
+  const { status: entradasStatus, data: entradasData } =
+    useDatabaseObjectData(entradasRef);
+
+  const salidasRef = ref(database, "salidas");
+  const { status: salidasStatus, data: salidasData } =
+    useDatabaseObjectData(salidasRef);
+
+  /* const firestore = useFirestore();
   const logsCollection = collection(firestore, "entryLog");
   const { status: statusLogs, data: dataLogs } =
-    useFirestoreCollectionData(logsCollection);
+    useFirestoreCollectionData(logsCollection); */
 
   return (
     <Card
@@ -33,13 +47,13 @@ const CapacitySection = () => {
           <Text h5>Porcentaje de ocupación</Text>
           <div style={{ display: "flex", alignItems: "center" }}>
             <Progress
-              value={dataLogs ? dataLogs[0].actuales : null}
+              value={actualesData ? actualesData : null}
               shadow
               color="primary"
               status="primary"
             />
             <span style={{ fontWeight: "bold", marginLeft: "15px" }}>
-              {`${dataLogs ? dataLogs[0].actuales : "0"}%`}
+              {`${actualesData ? actualesData : "0"}%`}
             </span>
           </div>
         </div>
@@ -51,22 +65,22 @@ const CapacitySection = () => {
           }}
         >
           <CardInfo
-            number={dataLogs ? dataLogs[0].entradas : null}
-            title={statusLogs === "success" ? "Ingresos" : "Cargando..."}
+            number={entradasData ? entradasData : null}
+            title={entradasStatus === "success" ? "Ingresos" : "Cargando..."}
             message="Personas que han entrado al centro comercial"
             icon={<ImEnter size={60} fill="#fff" />}
             colorName="success"
           />
           <CardInfo
-            number={dataLogs ? dataLogs[0].actuales : null}
-            title={statusLogs === "success" ? "Actuales" : "Cargando..."}
+            number={actualesData ? actualesData : null}
+            title={actualesStatus === "success" ? "Actuales" : "Cargando..."}
             message="Personas actualmente dentro del centro comercial"
             icon={<BsFillPeopleFill size={60} fill="#fff" />}
             colorName="secondary"
           />
           <CardInfo
-            number={dataLogs ? dataLogs[0].salidas : null}
-            title={statusLogs === "success" ? "Salidas" : "Cargando..."}
+            number={salidasData ? salidasData : null}
+            title={salidasStatus === "success" ? "Salidas" : "Cargando..."}
             message="Personas que han salido del centro comercial"
             icon={<BiExit size={60} fill="#fff" />}
             colorName="error"
