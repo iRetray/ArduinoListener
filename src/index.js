@@ -12,8 +12,6 @@ import {
 import { getFirestore } from "firebase/firestore";
 import { getDatabase } from "firebase/database";
 
-import ComponentWithRealtime from "./ComponentWithRealtime";
-
 import firebaseConfig from "./firebaseConfig";
 
 const AppWithFirebase = () => {
@@ -24,7 +22,6 @@ const AppWithFirebase = () => {
     <FirestoreProvider sdk={firestoreInstance}>
       <DatabaseProvider sdk={databaseInstance}>
         <ArduinoListener />
-        <ComponentWithRealtime />
       </DatabaseProvider>
     </FirestoreProvider>
   );
