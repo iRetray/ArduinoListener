@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import ArduinoListener from "./ArduinoListener";
+import Version from "./Version";
 
 import {
   FirebaseAppProvider,
@@ -22,6 +23,7 @@ const AppWithFirebase = () => {
     <FirestoreProvider sdk={firestoreInstance}>
       <DatabaseProvider sdk={databaseInstance}>
         <ArduinoListener />
+        <Version />
       </DatabaseProvider>
     </FirestoreProvider>
   );
