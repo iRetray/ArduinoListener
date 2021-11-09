@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Text, Card } from "@nextui-org/react";
 import { HiStatusOnline } from "react-icons/hi";
@@ -16,6 +16,11 @@ const BoardConsole = () => {
   const actualesRef = ref(database, "consoleMessages");
   const { status: statusMessages, data: dataMessages } =
     useDatabaseListData(actualesRef);
+
+  useEffect(() => {
+    var consoleContainer = document.getElementById("consoleContainer");
+    consoleContainer.scrollTop = consoleContainer.scrollHeight;
+  }, [dataMessages]);
 
   return (
     <div style={{ marginTop: "20px" }}>
@@ -73,7 +78,11 @@ const BoardConsole = () => {
                 <GoPrimitiveDot color="#2ACA44" size={30} className="dot" />
               </div>
             </div>
-            <div style={{ marginTop: "10px" }}>
+            <div
+              style={{ marginTop: "10px" }}
+              className="internalScrollable"
+              id="consoleContainer"
+            >
               {dataMessages &&
                 dataMessages.map((message, index) => (
                   <p key={index} className="lineConsole">

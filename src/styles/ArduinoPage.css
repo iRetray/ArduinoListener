@@ -1,6 +1,10 @@
 .ArduinoPage {
   padding: 20px;
 }
+.internalScrollable {
+  max-height: 315px;
+  overflow: auto;
+}
 .headerConsole {
   display: flex;
   align-items: center;
@@ -18,14 +22,32 @@
   margin: 10px 30px;
   background-color: #1e1e1e;
   border-radius: 10px;
-  padding: 10px 30px;
+  padding: 10px 7px 10px 25px;
   color: #d4d4d4;
   min-width: 400px;
   -webkit-box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.3);
-  max-height: 315px;
-  overflow: auto;
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #bfbfbf;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #595959;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #434343;
+}
+
 .lineConsole {
   margin: 0px;
   font-family: "Courier New", Courier, monospace;
