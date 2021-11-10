@@ -29,10 +29,11 @@ const BoardConsole = () => {
       <Card
         style={{
           marginTop: "30px",
-          width: "fit-content",
+          width: "100%",
           margin: "auto",
           justifyContent: "center",
         }}
+        shadow={false}
       >
         <div
           style={{

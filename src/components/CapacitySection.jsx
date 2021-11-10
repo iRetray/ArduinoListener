@@ -28,10 +28,11 @@ const CapacitySection = () => {
   return (
     <Card
       style={{
-        width: "fit-content",
+        width: "100%",
         margin: "auto",
         justifyContent: "center",
       }}
+      shadow={false}
     >
       <div style={{ marginTop: "10px" }}>
         <Text h3>Estado actual del Aforo</Text>
