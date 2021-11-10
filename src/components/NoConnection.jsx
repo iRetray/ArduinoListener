@@ -6,7 +6,7 @@ import { SiFirebase } from "react-icons/si";
 const NoConnection = () => {
   return (
     <div className="noConnection">
-      <Card style={{ width: "fit-content", margin: "auto" }}>
+      <Card style={{ width: "fit-content", margin: "auto" }} shadow={false}>
         <div className="internalCard">
           <center style={{ padding: "30px" }}>
             <Loading size="xlarge" type="points" />

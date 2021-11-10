@@ -8,6 +8,8 @@ import { SiFirebase } from "react-icons/si";
 import { ref } from "firebase/database";
 import { useDatabase, useDatabaseListData } from "reactfire";
 
+import NoConnection from "./NoConnection";
+
 import arduinoBoard from "../images/arduinoBoard.png";
 
 const BoardConsole = () => {
@@ -40,27 +42,33 @@ const BoardConsole = () => {
           }}
         >
           <div style={{ padding: "10px" }}>
-            <div>
-              <Text>
-                <strong>Arduino UNO</strong>
-              </Text>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <HiStatusOnline fill="#52c41a" />
-                <Text small style={{ marginLeft: "5px" }}>
-                  192.168.0.87
-                </Text>
+            {dataMessages && dataMessages.length === 0 ? (
+              <NoConnection />
+            ) : (
+              <div>
+                <div>
+                  <Text>
+                    <strong>ESP32</strong>
+                  </Text>
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <HiStatusOnline fill="#52c41a" />
+                    <Text small style={{ marginLeft: "5px" }}>
+                      192.168.0.87
+                    </Text>
+                  </div>
+                </div>
+                <center>
+                  <img
+                    src={arduinoBoard}
+                    style={{
+                      maxWidth: "300px",
+                      marginTop: "25px",
+                      marginBottom: "20px",
+                    }}
+                  />
+                </center>
               </div>
-            </div>
-            <center>
-              <img
-                src={arduinoBoard}
-                style={{
-                  maxWidth: "300px",
-                  marginTop: "25px",
-                  marginBottom: "20px",
-                }}
-              />
-            </center>
+            )}
           </div>
           <div className="consoleContainer">
             <div className="headerConsole">
@@ -83,13 +91,16 @@ const BoardConsole = () => {
               className="internalScrollable"
               id="consoleContainer"
             >
-              {dataMessages &&
+              {dataMessages && dataMessages.length > 0 ? (
                 dataMessages.map((message, index) => (
                   <p key={index} className="lineConsole">
                     <span className="number">{index + 1}</span>
                     {message}
                   </p>
-                ))}
+                ))
+              ) : (
+                <p className="lineConsole">No hay mensajes aún</p>
+              )}
             </div>
           </div>
         </div>

@@ -25,11 +25,6 @@ const CapacitySection = () => {
   const { status: salidasStatus, data: salidasData } =
     useDatabaseObjectData(salidasRef);
 
-  /* const firestore = useFirestore();
-  const logsCollection = collection(firestore, "entryLog");
-  const { status: statusLogs, data: dataLogs } =
-    useFirestoreCollectionData(logsCollection); */
-
   return (
     <Card
       style={{
@@ -47,13 +42,21 @@ const CapacitySection = () => {
           <Text h5>Porcentaje de ocupación</Text>
           <div style={{ display: "flex", alignItems: "center" }}>
             <Progress
-              value={actualesData ? actualesData : null}
+              value={
+                actualesData ? (actualesData >= 100 ? 100 : actualesData) : null
+              }
               shadow
               color="primary"
               status="primary"
             />
             <span style={{ fontWeight: "bold", marginLeft: "15px" }}>
-              {`${actualesData ? actualesData : "0"}%`}
+              {`${
+                actualesData
+                  ? actualesData >= "100"
+                    ? "100"
+                    : actualesData
+                  : "0"
+              }%`}
             </span>
           </div>
         </div>
